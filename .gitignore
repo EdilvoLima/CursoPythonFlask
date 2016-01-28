@@ -1,1 +1,2 @@
-*.cs
+*.pyc
+flask_env

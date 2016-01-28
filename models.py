@@ -5,7 +5,6 @@ class Produto(db.Model):
     IdProduto = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     value = db.Column(db.Float)
-
     Produto_vendas = db.relationship('ProdutoVenda', backref='produto')
     Produto_compras = db.relationship('ProdutoCompra', backref='produto')
 
@@ -16,11 +15,11 @@ class Produto(db.Model):
         self.name = name
         self.value = value
 
+
 class Compra(db.Model):
     __tablename__ = 'compra'
     IdCompra = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime)
-
     Compra_compras = db.relationship('ProdutoCompra', backref='compra')
 
     def __repr__(self):
@@ -29,11 +28,11 @@ class Compra(db.Model):
     def __init__(self, date):
         self.date = date
 
+
 class Venda(db.Model):
     __tablename__ = 'venda'
     IdVenda = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime)
-
     Venda_vendas = db.relationship('ProdutoVenda', backref='venda')
 
     def __repr__(self):
@@ -41,6 +40,7 @@ class Venda(db.Model):
 
     def __init__(self, date):
         self.date = date
+
 
 class ProdutoVenda(db.Model):
     __tablename__ = 'produtoVenda'
@@ -56,6 +56,7 @@ class ProdutoVenda(db.Model):
         self.ProdutoVenda_IdProduto = ProdutoVenda_IdProduto
         self.ProdutoVenda_IdVenda = ProdutoVenda_IdVenda
         self.amount = amount
+
 
 class ProdutoCompra(db.Model):
     __tablename__ = 'produtoCompra'
